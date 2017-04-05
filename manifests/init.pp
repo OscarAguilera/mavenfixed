@@ -77,15 +77,15 @@ file { "/tmp/apache-maven-3.3.9-bin.tar.gz":
       command => "mv ${maven_folder} ${maven_home}",
       creates => "${maven_home}",
       cwd => "/tmp",
-      require => Exec["extract maven"]
+      require => Exec["extract_maven"]
   }
 
   file { "/etc/profile.d/maven.sh":
       content =>  "export MAVEN_HOME=${maven_home}
                    export M2=\$MAVEN_HOME/bin
                    export PATH=\$PATH:\$M2
-                   export MAVEN_OPTS=\"-Xmx512m -Xms512m\""
+                   export MAVEN_OPTS=\"-Xmx512m -Xms512m\"",
   }
 
-  exec { 'maven_shell' },
+  exec { 'maven_shell'}
 }
