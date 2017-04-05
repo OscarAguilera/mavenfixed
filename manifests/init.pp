@@ -66,7 +66,7 @@ file { "/tmp/apache-maven-3.3.9-bin.tar.gz":
   }
 
 
-  exec { extrac_ maven :
+  exec { 'extrac_ maven' :
       cwd => "/tmp",
       command => "tar -xfv /tmp/apache-maven-3.3.9-bin.tar.gz",
       creates => "${maven_home}",
