@@ -76,7 +76,7 @@ file { "/tmp/apache-maven-3.3.9-bin.tar.gz":
   exec { 'move_maven' :
       command => "mv ${maven_folder} ${maven_home}",
       creates => "${maven_home}",
-      cwd => cd "/tmp",
+      cwd => "/tmp",
       require => Exec["extract maven"]
   }
 
