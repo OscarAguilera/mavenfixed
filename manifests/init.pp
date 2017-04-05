@@ -87,5 +87,5 @@ file { "/tmp/apache-maven-3.3.9-bin.tar.gz":
                    export MAVEN_OPTS=\"-Xmx512m -Xms512m\""
   }
 
-  exec { 'maven_shell', }
+  exec { 'maven_shell' },
 }
