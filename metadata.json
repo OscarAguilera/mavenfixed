@@ -1,0 +1,15 @@
+{
+  "name": "oscar-mavenfixed",
+  "version": "1.0.0",
+  "author": "Oscar Aguilera",
+  "summary": "Maven-3.3.9",
+  "license": "Apache-2.0",
+  "source": "",
+  "project_page": null,
+  "issues_url": null,
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
+
