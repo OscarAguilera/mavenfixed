@@ -42,8 +42,8 @@
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
-class maven { #Maven Class
-  $maven_home = "/usr/lib/maven"
+class::maven { #Maven Class
+  $maven_home = "/usr/local/maven"
   $maven_archive = "apache-maven-3.3.9-bin.tar.gz"
   $maven_folder = "apache-maven-3.3.9"
 
@@ -69,19 +69,19 @@ file { "/tmp/apache-maven-3.3.9-bin.tar.gz":
   exec { 'extrac_ maven' :
       cwd => "/tmp",
       command => "tar -xfv /tmp/apache-maven-3.3.9-bin.tar.gz",
-      creates => "${maven_home}",
-      require => File["/tmp/$maven_archive"]
+      creates => "/usr/local/maven",
+      require => File["/tmp/apache-maven-3.3.9-bin.tar.gz"]
   }
 
   exec { 'move_maven' :
-      command => "mv ${maven_folder} ${maven_home}",
-      creates => "${maven_home}",
+      command => "mv apache-maven-3.3.9 /usr/local/maven",
+      creates => "/usr/local/maven",
       cwd => "/tmp",
       require => Exec["extract_maven"]
   }
 
   file { "/etc/profile.d/maven.sh":
-      content =>  "export MAVEN_HOME=${maven_home}
+      content =>  "export MAVEN_HOME=/usr/local/maven
                    export M2=\$MAVEN_HOME/bin
                    export PATH=\$PATH:\$M2
                    export MAVEN_OPTS=\"-Xmx512m -Xms512m\"",
